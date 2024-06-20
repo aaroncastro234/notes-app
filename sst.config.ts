@@ -1,5 +1,11 @@
 import { SSTConfig } from "sst";
-import { API } from "./stacks/MyStack";
+import { StorageStack } from "./stacks/StorageStack";
+import { Bucket, StackContext, Table } from "sst/constructs";
+
+// Create an S3 bucket
+const bucket = new Bucket(stack, "Uploads");
+
+
 
 export default {
   config(_input) {
@@ -9,6 +15,6 @@ export default {
     };
   },
   stacks(app) {
-    app.stack(API);
-  }
+    app.stack(StorageStack);
+  },
 } satisfies SSTConfig;
